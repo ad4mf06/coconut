@@ -117,6 +117,18 @@ Par exemple : Dans le bloque d'exemple en haut, le `final_where_statement` est x
 
 Lien vers la PR -> https://github.com/evhub/coconut/pull/900
 
+
+### Réponse du project owner
+
+This looks pretty good! We should pick only one of these two syntaxes, though, and you should make sure to test that the variables in the where clause are properly hidden from the enclosing scope. I think I probably prefer the where: syntax over the do: syntax since do has a specific meaning in many functional programming languages that is not this.
+
+
+### Ajustement 
+
+
+
+
+
 ---
 
 ### Issue #887 – Pattern-matching comprehensions - Terminer
