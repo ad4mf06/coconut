@@ -125,7 +125,9 @@ This looks pretty good! We should pick only one of these two syntaxes, though, a
 
 ### Ajustement 
 
+1. J'ai enlevé le do: de la syntaxe possible pour le where statement.
 
+2. J'ai ajouté un test qui vérifie que les variables de la fonction soient bien caché.
 
 
 
@@ -168,6 +170,9 @@ Solution : Ajouter un if `len(match_for_group) == 2` pour continuer dans le fonc
 
 
 Lien vers la PR -> https://github.com/evhub/coconut/pull/901
+
+### Message du project owner
+I think it's a bit confusing for only the first comprehension to have the ability to be a pattern-matching comprehension. My preference here is to either stick with the current implementation that only allows one comprehension, or to support arbitrary mixing and matching of standard and pattern-matching comprehensions (the ideal, but annoying to implement).
 
 ---
 
