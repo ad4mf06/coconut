@@ -208,7 +208,7 @@ Cette issue propose d'ajouter le support de l'exécution automatique des fichier
   erreur.
 
 
-Lien vers la PR -> 
+Lien vers la PR -> https://github.com/evhub/coconut/pull/902
 
 
 ### Autres issues disponibles intéressantes pour la suite de la session
