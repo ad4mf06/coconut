@@ -174,6 +174,14 @@ Lien vers la PR -> https://github.com/evhub/coconut/pull/901
 ### Message du project owner
 I think it's a bit confusing for only the first comprehension to have the ability to be a pattern-matching comprehension. My preference here is to either stick with the current implementation that only allows one comprehension, or to support arbitrary mixing and matching of standard and pattern-matching comprehensions (the ideal, but annoying to implement).
 
+
+
+### Ajustement
+
+- J'ai implémenté la deuxième option de sa demande c'est-à-dire que j'ai implémenté le support 
+  arbitraire des matching standard et des compréhensions avec pattern matching. 
+
+
 ---
 
 
