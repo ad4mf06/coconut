@@ -289,11 +289,10 @@ def test_pattern_match():
 
 Ensuite pour voir si l'importation de test fonctionne, 
 
-Importer le plugin de test
+Installer les dépendances
 
 ```bash
-from coconut.api import install_pytest_plugin
-
+pip install -e 
 ```
 
 Lancer le test
@@ -302,12 +301,24 @@ Lancer le test
 pytest test_demo/ -v     
 ```
 
+### Issue #899 - Match rest keyword arguments of a data class - Commencé le 03/03/2026
+
+Lien vers l'issue -> https://github.com/evhub/coconut/issues/899
 
 
+Planification de l'issue : 
+1. Trouver le problème :   
+  Première hypothèse, le match peut reconnaitre la synthaxe  (*_) ou toute forme d'utilisation 
+    d'un * comme argument, mais le compileur ne reconnait pas l'argument (**) etlance une erreur 
+    lorsque l'utilisateur entre  **
+2. Implémenter la correction  
+  Implémenter les fichiers coconut/compiler.py et coconut/grammar.py
+3. Tester que tout fonctionne  
+   Ajouter des tests dans primary_2.coco pour vérifier que l'implémentation fonctionne
+4. Finaliser l'issue préférablement à la semaine 9 pour laiser 3 semaines pour la dernière issue 
+   et une semaine pour la remise finale
 
-### Autres issues disponibles intéressantes pour la suite de la session
 
-1. Match rest keyword arguments of a data class #899 -> https://github.com/evhub/coconut/issues/899
-2. Add lazy import syntax #890 -> https://github.com/evhub/coconut/issues/890
-3. Xontrib: Allow using coconut in rc files and @(...) syntax -> https://github.com/evhub/coconut/issues/883
+### Autre issue disponible intéressante que j'aimerais faire avant la remise finale
+Xontrib: Allow using coconut in rc files and @(...) syntax -> https://github.com/evhub/coconut/issues/883
 
