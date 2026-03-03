@@ -113,8 +113,6 @@ Par exemple : Dans le bloque d'exemple en haut, le `final_where_statement` est x
   cette ligne n'a pas de `=`
 
 
-
-
 Lien vers la PR -> https://github.com/evhub/coconut/pull/900
 
 
@@ -128,6 +126,32 @@ This looks pretty good! We should pick only one of these two syntaxes, though, a
 1. J'ai enlevé le do: de la syntaxe possible pour le where statement.
 
 2. J'ai ajouté un test qui vérifie que les variables de la fonction soient bien caché.
+
+### Tester l'issue
+
+Entrez la commande suivante : 
+
+```bash
+git checkout feature/where-final-result-863     
+```
+Ensuite en console, entrez :
+
+```bash
+coconut   
+```
+
+Une fois la console intéractive lancer, vous pouvez des where : par exemple :
+
+```bash
+out = where:
+      x = 1 + 2 + 3
+      y = 4 + 5 + 6
+      x + y 
+      
+print(out)
+```
+
+Ceci devrait donner le nombre 21.
 
 
 
@@ -180,6 +204,27 @@ I think it's a bit confusing for only the first comprehension to have the abilit
 
 - J'ai implémenté la deuxième option de sa demande c'est-à-dire que j'ai implémenté le support 
   arbitraire des matching standard et des compréhensions avec pattern matching. 
+
+
+### Tester l'issue
+
+Commencer par aller sur la branche contenant l'implémentation
+
+```bash
+git checkout feature/pattern-matching-comprehensions-887 
+```
+
+Ensuite lancer la console intéractive
+
+```bash
+coconut
+```
+
+Puis exécuter ce test
+
+```bash
+
+```
 
 
 ---
