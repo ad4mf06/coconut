@@ -223,8 +223,12 @@ coconut
 Puis exécuter ce test
 
 ```bash
-
+data CompPair(a, b)
+pairs = [CompPair(1, 2), CompPair(3, 4), CompPair(5, 6)]
+print(sum(a + b for CompPair(a, b) in pairs))
 ```
+
+Ceci devrait donner le nombre 21
 
 
 ---
@@ -254,6 +258,51 @@ Cette issue propose d'ajouter le support de l'exécution automatique des fichier
 
 
 Lien vers la PR -> https://github.com/evhub/coconut/pull/902
+
+
+### Tester l'issue
+
+Commencer par aller sur la branche contenant l'implémentation
+
+```bash
+git checkout feature/pytest-auto-compilation-888 
+```
+
+Créer un dossier nommé ``test_demo``
+
+Créer un fichier à l'intérieur du nouveau dossier ``test_pipeline.coco``
+
+Copier ceci dans le fichier créé 
+
+```bash
+def test_pipeline():
+    result = 1 |> (+ 1) |> (+ 1)
+    assert result == 3
+
+def test_pattern_match():
+    match [1, 2, 3]:
+        case [head, *tail]:
+            assert head == 1
+            assert tail == [2, 3]
+
+```
+
+Ensuite pour voir si l'importation de test fonctionne, 
+
+Importer le plugin de test
+
+```bash
+from coconut.api import install_pytest_plugin
+
+```
+
+Lancer le test
+
+```bash
+pytest test_demo/ -v     
+```
+
+
 
 
 ### Autres issues disponibles intéressantes pour la suite de la session
