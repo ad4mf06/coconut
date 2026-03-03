@@ -17,7 +17,14 @@ winget install Python.Python.3
 winget install --id Git.Git -e --source winget
 ```
 
-3. **Espace disque** — Il faut au minimum **2 Go** d'espace libre sur le disque de stockage (inclut Python, Git, le dépôt et l'environnement virtuel avec ses dépendances).
+3. **Coconut**
+
+```bash
+ pip install coconut
+```
+
+4. **Espace disque** — Il faut au minimum **2 Go** d'espace libre sur le disque de stockage 
+(inclut Python, Git, le dépôt et l'environnement virtuel avec ses dépendances).
 
 ### Étapes
 
