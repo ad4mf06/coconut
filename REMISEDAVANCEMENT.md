@@ -185,15 +185,30 @@ I think it's a bit confusing for only the first comprehension to have the abilit
 ---
 
 
-### Issue #888 – Pytest with automatic compilation - En cours
+### Issue #888 – Pytest with automatic compilation - Terminer 
 
 Cette issue propose d'ajouter le support de l'exécution automatique des fichiers `.coco` via pytest sans compilation préalable. L'objectif est de configurer un hook pytest pour collecter et compiler les fichiers `.coco` à la volée, évitant ainsi les erreurs de module mismatch.
 
-**Travail en cours :**
+**Changements effectués:**
 - Analyse de l'erreur `import file mismatch` causée par la différence entre `.coco` et `.py`
 - Exploration des hooks pytest (`pytest_collect_file`) pour gérer la compilation automatique
+- Ajouté pytest11 comme plugin pour qu'il soit directement installé
+- Création du fichier pytest_plugin.py qui contient ces 3 fonctions :
+  1.  pytest_configure — appelé au démarrage de la session pytest. Installe _PytestCoconutImporter en tête de sys.meta_path pour intercepter les imports de modules .coco.
+  2.  pytest_collect_file — appelé pour chaque fichier trouvé. Si le fichier est test_*.coco, il le compile en .py à côté du source (pas dans un cache), puis dit à pytest de collecter ce .py. C'est ce qui règle le import file
+  3.  pytest_ignore_collect — évite la double-collecte en ignorant le dossier __coconut_cache__/ et les .py qui ont un .coco source à côté
+- Override 2 function hérité de CoconutImporter
+  1. La function compile() pour remplacer sys.stdin pendant la compilation (pytest capture stdin, ce qui causerait une OSError)
+  2. La function find_spec() pour retourner un spec pointant vers le .py en place, empêchant l'importer global de rediriger ailleurs
+- Ajouté une fonction dans api.py qui permet d'installer manuellement pytest11
 
-Lien vers l'Issue -> 
+**Problèmes principaux rencontrés**
+
+- Problème de double collect. Les fichiers test ayant déja une version complilés lançaient une 
+  erreur.
+
+
+Lien vers la PR -> 
 
 
 ### Autres issues disponibles intéressantes pour la suite de la session
