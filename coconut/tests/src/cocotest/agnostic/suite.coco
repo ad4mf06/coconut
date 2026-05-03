@@ -933,6 +933,16 @@ forward 2""") == 900
     match clsA(.a=2) in clsA():
         assert False
     assert_raises((def -> clsA(.b=1) = clsA()), AttributeError)
+    # dubstar (**rest) in class and data patterns
+    assert class_dubstar_basic(HasTwoVals(1, 2)) == (1, {"val2": 2})
+    assert class_dubstar_basic(HasTwoVals("a", "b")) == ("a", {"val2": "b"})
+    assert class_dubstar_basic("not a HasTwoVals") is None
+    assert class_dubstar_positional(HasThreeVals(1, 2, 3)) == {"val2": 2, "val3": 3}
+    assert class_dubstar_positional("not a HasThreeVals") is None
+    assert data_dubstar_basic(TwoFields(10, 20)) == (10, {"second": 20})
+    assert data_dubstar_basic("not a TwoFields") is None
+    assert data_dubstar_positional(ThreeFields(1, 2, 3)) == {"second": 2, "third": 3}
+    assert data_dubstar_positional("not a ThreeFields") is None
     assert MySubExc("derp") `isinstance` Exception
     assert clsA().not_super() is True
     match class store.A(1) = store.A(1)

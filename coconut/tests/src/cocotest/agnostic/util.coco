@@ -1987,12 +1987,29 @@ class HasVal:
         self.val = val
 
 class HasTwoVals:
+    __match_args__ = ("val1", "val2")
     def __init__(self, val1, val2):
         self.val1, self.val2 = val1, val2
 
 class HasThreeVals:
+    __match_args__ = ("val1", "val2", "val3")
     def __init__(self, val1, val2, val3):
         self.val1, self.val2, self.val3 = val1, val2, val3
+
+data TwoFields(first, second)
+data ThreeFields(first, second, third)
+
+match def class_dubstar_basic(HasTwoVals(val1=x, **rest)) = (x, rest)
+addpattern def class_dubstar_basic(_) = None  # type: ignore
+
+match def class_dubstar_positional(HasThreeVals(_, **rest)) = rest
+addpattern def class_dubstar_positional(_) = None  # type: ignore
+
+match def data_dubstar_basic(TwoFields(first=x, **rest)) = (x, rest)
+addpattern def data_dubstar_basic(_) = None  # type: ignore
+
+match def data_dubstar_positional(ThreeFields(_, **rest)) = rest
+addpattern def data_dubstar_positional(_) = None  # type: ignore
 
 match def is_complex_tree(
     HasElems(
